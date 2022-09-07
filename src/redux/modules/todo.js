@@ -1,4 +1,4 @@
-//action
+// action value
 const CREATE = 'CREATE';
 const REMOVE = 'REMOVE';
 const UPDATE = 'UPDATE';
@@ -19,7 +19,7 @@ const initialState = {
 }
 
 // Action Creators
-export function createlist(id, title, body) {
+ export function createlist(id, title, body) {
     return {
         type: CREATE,
         payload: {
@@ -40,7 +40,7 @@ export function removelist(id) {
     }
 }
 
-export function updatelist(id) {
+ export function updatelist(id) {
     return {
         type: UPDATE,
         payload: {
@@ -50,18 +50,18 @@ export function updatelist(id) {
     }
 }
 
-// Reducer
+//  Reducer
 export default function reducer(state = initialState, { payload, type }) {
     switch (type) {
         case CREATE: 
-
+        console.log(payload)
             return {
                 ...state,
-                list: state.list.concat({
+                list : state.list.concat({
                     id: payload.id,
                     title: payload.title,
                     body: payload.body,
-                    isDone: false
+                    isDone: false    //한번 더 생각해보기
                 })
 
 
@@ -79,7 +79,7 @@ export default function reducer(state = initialState, { payload, type }) {
                     ...state,
                     list: state.list.map((todo)=> ({
                         ...todo,
-                        isDone:todo.id === payload.id ? !todo.isDone : todo.isDone
+                        isDone:todo.id  === payload.id ? !todo.isDone : todo.isDone  //한번 더 생각해보기
                     }))
                 }
 

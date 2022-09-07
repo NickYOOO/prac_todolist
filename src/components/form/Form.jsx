@@ -12,7 +12,7 @@ function Form() {
 
   const onChangeHandlerTitle = (e)=> {
     setTitle(e.target.value); 
-   console.log(e)
+   console.log(e.target.value)
   }
   const onChangeHandlerBody = (e)=> {
     setBody(e.target.value);
@@ -23,12 +23,14 @@ function Form() {
     setId(id +1);
     setTitle("");
     setBody("");
-    dispatch(createlist(id, title, body));
+    console.log(id, title, body)
+    dispatch(createlist(id, title, body)); //1개 이상의 값은 딕셔너리 형태로 받아햐 함 , 왜 그전에는 그냥 됐지?..
   };
 
+  //form 태그,   event.preventDefault();   -> onClick!
   return (
 
-    <form onSubmit={onSubmitHandler} className="add-form">
+    <form onSubmit={onSubmitHandler} className="add-form">  
       <div className="input-group">
         <label className="form-label">제목</label>
         <input
@@ -47,6 +49,7 @@ function Form() {
           onChange={onChangeHandlerBody}
         />
       </div>
+      {/* onClick={onSubmitHandler} 가 아니더라도 form 태그에 메소드로 인해 submit 과 reset이 됨 */}
       <button className="add-button" onClick={onSubmitHandler} type = "createlist">추가하기</button>
     </form>
   );
